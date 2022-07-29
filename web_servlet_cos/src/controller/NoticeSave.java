@@ -65,7 +65,7 @@ public class NoticeSave extends HttpServlet {
 		request.setAttribute("t_msg", msg);
 		request.setAttribute("t_url", "/Notice");
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/common_alert_page.jap");
+		RequestDispatcher rd = request.getRequestDispatcher("/common_alert_page.jsp");
 		rd.forward(request, response);
 		
 	}

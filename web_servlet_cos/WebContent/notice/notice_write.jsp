@@ -5,8 +5,8 @@
 
 <script>
 function goSave(){
-
-	alert("sex");
+	if(checkValue(notice.t_title,"제목 입력!")) return;
+	if(checkValue(notice.t_content,"내용 입력!")) return;
 //첨부파일 검사
 //확장자 검사
 	
@@ -14,16 +14,14 @@ var fileName = notice.t_attach.value;
 if(fileName !=""){
 	var pathFileName = fileName.lastIndexOf(".")+1;    //확장자 제외한 경로+파일명
 	var extension = (fileName.substr(pathFileName)).toLowerCase();	//확장자명
-	alert("sex1.5");
-	
+
 	//파일명.확장자
-//	if(extension != "jpg" && extension != "gif" && extension != "png"){
-	if(extension != "pdf" && extension != "hwp"){
+	if(extension != "jpg" && extension != "gif" && extension != "png"){
+//	if(extension != "pdf" && extension != "hwp"){
 		alert(extension +" 형식 파일은 업로드 안됩니다. 한글, PDF 파일만 가능!");
 		return;
 		}		
 	}
-alert("sex2");
 //첨부 용량 체크	
 var file = notice.t_attach;
 var fileMaxSize  = 5; // 첨부 최대 용량 설정
@@ -48,12 +46,7 @@ if(file.value !=""){
 		alert(" 첨부파일 사이즈는 "+fileMaxSize+"MB 이내로 등록 가능합니다. ");
 		return;
 	}	
-}		
-alert("sex3");
-
-		if(checkValue(notice.t_title,"제목 입력!")) return;
-		if(checkValue(notice.t_content,"내용 입력!")) return;
-		if(checkValue(notice.t_reg_date,"등록일자 입력!")) return;
+}			
 		notice.method="post";
 		notice.action="/NoticeSave";
 		notice.submit();
@@ -79,10 +72,10 @@ alert("sex3");
 		<div id="b_left">
 			<P>NOTICE</P>
 			<ul>
-				<li><a href=""><i class="fas fa-apple-alt"></i> NOTICE</a></li>
-				<li><a href="">NEWS</a></li>
-				<li><a href="">QandA</a></li>
-				<li><a href="">FAQ</a></li>
+				<li><a href="/Notice"><i class="fas fa-apple-alt"></i> NOTICE</a></li>
+				<li><a href="/News">NEWS</a></li>
+				<li><a href="/QandA">QandA</a></li>
+				<li><a href="/Faq">FAQ</a></li>
 			</ul>
 		</div>
 		
@@ -113,7 +106,7 @@ alert("sex3");
 				</tr>
 				<tr>
 					<th><i class="fas fa-asterisk"></i>Attach</th>
-					<td colspan="3" class="hei30"><input type="file" class="inputFile"></td>
+					<td colspan="3" class="hei30"><input type="file" name="t_attach" class="inputFile"></td>
 				</tr>
 <!-- 									
 				<tr>

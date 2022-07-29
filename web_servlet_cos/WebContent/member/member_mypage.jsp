@@ -15,7 +15,7 @@
 		<div id="b_left">
 			<P>MEMBER</P>
 			<ul>
-				<li><a href="javascript:goPage('myPage')"><i class="fas fa-apple-alt"></i> MyPage</a></li>
+				<li><a href="javascript:goPageHead('myPage')"><i class="fas fa-apple-alt"></i> MyPage</a></li>
 			</ul>
 		</div>
 		

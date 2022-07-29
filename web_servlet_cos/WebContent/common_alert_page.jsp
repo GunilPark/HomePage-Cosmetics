@@ -19,8 +19,6 @@
 alert(post.t_msg.value);
 post.method="post";
 post.action=post.t_url.value;
-//post.action="/Club";
-//post.action="/Snack"
 post.submit();
 </script>
 </html>

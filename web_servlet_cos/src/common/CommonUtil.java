@@ -14,7 +14,7 @@ public class CommonUtil {
 		
 		// 첨부파일 공지 사항 경로(notice)
 		public static String getFile_dir_notice(){
-			String dir = "C:/Users/user/git/funiture-homepage/web_seevlet_cos/WebContent/attach/notice/";
+			String dir = "C:/Users/pki32/git/HomePage-Cosmetics/web_servlet_cos/WebContent/attach/free";
 			return dir;
 		}
 		

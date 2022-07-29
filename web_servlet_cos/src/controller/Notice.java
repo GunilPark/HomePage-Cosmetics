@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.notice.NoticeList;
+import command.notice.NoticeUpdate;
+import command.notice.NoticeView;
 import command.notice.NoticeWrite;
 import common.InterExecute;
 
@@ -51,7 +53,16 @@ public class Notice extends HttpServlet {
 			InterExecute notice = new NoticeWrite();
 			notice.execute(request, response);
 			viewPage = "/notice/notice_write.jsp";
+		}else if(gubun.equals("view")) {
+			InterExecute notice = new NoticeView();
+			notice.execute(request, response);
+			viewPage = "/notice/notice_view.jsp";
+		}else if(gubun.equals("update")) {
+			InterExecute notice = new NoticeUpdate();
+			notice.execute(request, response);
+			viewPage = "/notice/notice_update.jsp";
 		}
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher(viewPage);
 		rd.forward(request, response);

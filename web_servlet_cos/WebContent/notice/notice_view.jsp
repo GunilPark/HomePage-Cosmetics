@@ -1,108 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<title>젤스엘</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-	<script type="text/javascript" src="../js/jquery-1.8.1.min.js"></script>  
-	<link rel="stylesheet" type="text/css" href="../css/base.css" /> 	
-	<link rel="stylesheet" type="text/css" href="../css/main_menu.css" />
-	<link rel="stylesheet" type="text/css" href="../css/subpage.css" />
-<script type="text/javascript">
-    //<![CDATA[
-    $(function(){
-    	$(".top_menu_main_right > ul > li > a").mouseover(function(){
-			$(".top_menu_main_right div").hide();
-			$(this).next().slideDown(1000);
-    	});    
-    	$(".top_menu_main_right").mouseleave(function(){
-			$(".top_menu_main_right div").slideUp(1000);
-		}) 
-    });     
-
- //]]>
-</script>
-</head>
-<body>
-
-<div id="container_top">
-
-	<div id="top_menu">
-		<div class="top_menu_top">
-			<ul class="topRight">
-				<!--<li><span class="wid"></span></li>-->
-				<li><a href=""><i class="fa fa-home"></i>홈</a></li>
-				<li><a href="">로그인</a></li>
-				<li><a href="">회원가입</a></li>
-				<li><a href="">마이페이지</a></li>
-				<li><a href="">장바구니</a></li>
-			</ul>
-			<ul class="topLeft">
-				<li><a class="snsBasic"><i class="fab fa-instagram"></i></a></li>
-				<li><a class="snsBasic"><i class="fab fa-facebook"></i></a></li>
-				<li><a class="snsBasic"><i class="fab fa-twitter"></i></a></li>
-				<li><a class="snsBasic"><i class="fab fa-youtube"></i></a></li>
-				<li><a class="snsBasic"><i class="fas fa-comment-dots"></i></a></li>
-			</ul>			
-		</div>
-		
-		<div class="top_menu_main">
-			<div class="top_menu_main_left">
-				<a href=""><img src="img/images/logo.jpg"></a>
-			</div>
-			<div class="top_menu_main_right">
-				<ul>
-					<li><a href="">Toner<br>Skin</a>
-						<div id="ddd">
-							<ul>
-								<li><a href="">Toner</a></li>
-								<li><a href="">Skin</a></li>
-							</ul>
-						</div>					
-					</li>
-					<li><a href="">Essence<br>Ample<br>Serum</a>
-						<div>
-							<ul>
-								<li><a href="">Essence</a></li>
-								<li><a href="">Ample</a></li>
-								<li><a href="">Serum</a></li>
-							</ul>
-						</div>					
-					</li>
-					<li><a href="">Emulsion<br>Lotion</a>
-						<div>
-							<ul>
-								<li><a href="">Emulsion</a></li>
-								<li><a href="">Lotion</a></li>
-							</ul>
-						</div>					
-					</li>
-					<li><a href="">Cream</a>
-						<div>
-							<ul>
-								<li><a href="">바니싱</a></li>
-								<li><a href="">콜드</a></li>
-								<li><a href="">마사지</a></li>
-								<li><a href="">데이</a></li>
-								<li><a href="">나이트</a></li>
-							</ul>
-						</div>						
-					</li>
-					<li><a href="">Oil</a>
-						<div>
-							<ul>
-								<li><a href="">Body</a></li>
-								<li><a href="">Face</a></li>
-							</ul>
-						</div>					
-					</li>
-				</ul>
-			</div>
-		</div>
-		
-	</div>
-</div>
+<%@ include file="../common_head.jsp" %>
 
 <div id="container">
 
@@ -110,16 +9,7 @@
 		<!--<img src="img/images/top_back_1.jpg">-->
 	</div>
 
-	<div id="member">
-		<div id="b_left">
-			<P>NOTICE</P>
-			<ul>
-				<li><a href=""><i class="fas fa-apple-alt"></i> NOTICE</a></li>
-				<li><a href="">NEWS</a></li>
-				<li><a href="">QandA</a></li>
-				<li><a href="">FAQ</a></li>
-			</ul>
-		</div>
+	<%@ include file="/common_menu.jsp" %>
 		
 		<div id="b_right">
 			<p class="n_title">
@@ -137,35 +27,51 @@
 				<tr>
 					<th><i class="fas fa-asterisk important"></i>Title</th>
 					<td colspan="3">
-						제품 구매 절차 과정 안내 드립니다.
+						${t_dto.getTitle()}
 					</td>
 				</tr>
 				<tr>
 					<th><label for="t_content"><i class="fas fa-asterisk important"></i>Content</label></th>
 					<td colspan="3">
-						<textarea name="t_content" class="textArea_H250_noBorder">제품 구매 절차 과정 안내.1. 회원가입 2. 목록조회3. 구매결정5. 물품수령
+						<textarea name="t_content" class="textArea_H250_noBorder">${t_dto.getContent()}
 						</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th><i class="fas fa-asterisk"></i>Attach</th>
-					<td colspan="3" class="hei30">송금계좌번호.hwp</td>
+					<td colspan="3" class="hei30">${t_dto.getAttach()}</td>
 				</tr>					
 				<tr>
 					<th>Writer</th>
 					<td>
-						관리자
+						${t_dto.getReg_id()}
 					</td>
 					<th>Reg Date</th>
 					<td>
-						2021-02-28
+						${t_dto.getReg_date()}
 					</td>
 				</tr>
 				
 				</tbody>
 			</table>
 			<div class="buttonGroup_center">
-				<a href="" class="butt">LIST</a>
+				<a href="/Notice" class="butt">LIST</a>
+				<c:if test="${sessionLevel eq 'top'}">
+					<a href="javascript:goWrite()" class="butt">UPDATE</a>
+				</c:if>
+				<form name="update">
+					<input name="t_gubun" type="hidden">
+					<input name="t_no" type="hidden" value="${t_dto.getNo()}">
+				</form>
+				<script>
+					function goWrite(){
+						update.t_gubun.value = "update";
+						update.method="post";
+						update.action="/Notice";
+						update.submit();
+						
+					}
+				</script>
 			</div>	
 		</div>	
 	

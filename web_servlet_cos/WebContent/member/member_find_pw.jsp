@@ -12,9 +12,9 @@
 		<div id="b_left">
 			<P>MEMBER</P>
 			<ul>
-				<li><a href="javascript:goPage('login')">LOGIN</a></li>
-				<li><a href="javascript:goPage('findPw')"><i class="fas fa-apple-alt"></i> ID / PASSWORD</a></li>
-				<li><a href="javascript:goPage('join')">JOIN</a></li>
+				<li><a href="javascript:goPageHead('login')">LOGIN</a></li>
+				<li><a href="javascript:goPageHead('findPw')"><i class="fas fa-apple-alt"></i> ID / PASSWORD</a></li>
+				<li><a href="javascript:goPageHead('join')">JOIN</a></li>
 			</ul>
 		</div>
 		

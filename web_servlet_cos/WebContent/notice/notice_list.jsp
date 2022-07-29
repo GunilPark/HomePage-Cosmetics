@@ -20,9 +20,18 @@
 		notiForm.action="/Notice";
 		notiForm.submit();
 	}
-</script> 
+	function goView(no){
+		notiForm.t_gubun.value ="view";
+		notiForm.t_no.value = no;
+		notiForm.method="post";
+		notiForm.action="/Notice";
+		notiForm.submit();
+	}
+</script>
+
 <form name="notiForm">
 <input name="t_gubun" type="hidden">
+<input name="t_no" type="hidden">
 </form>
 <div id="container">
 
@@ -40,7 +49,6 @@
 			<form name="noti">
 			<p class="select_box">
 				<select name="t_select" class="sel_box">
-				
 					<option value="a.title" <c:if test="${t_select eq 'a.title'}">selected</c:if>>Title</option>
 					<option value="a.content" <c:if test="${t_select eq 'a.content'}">selected</c:if>>Content</option>
 				</select>
@@ -71,8 +79,8 @@
 				<tbody>
 				<c:forEach items="${t_dtos}" var="dto">
 					<tr>
-						<td><a href="/Notice">${dto.getNo()}</a></td>
-						<td class="t_center"><a href="/Notice">${dto.getTitle()}</a></td>
+						<td><a href="javascript:goView('${dto.getNo()}')">${dto.getNo()}</a></td>
+						<td class="t_center"><a href="javascript:goView('${dto.getNo()}')">${dto.getTitle()}</a></td>
 						<td><c:if test="${dto.getAttach() ne null}">
 						<i class="fas fa-paperclip"></i>
 						</c:if></td>
