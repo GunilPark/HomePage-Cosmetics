@@ -1,9 +1,13 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 <head>
 <title>젤스엘</title>
+<!--  
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+-->
+	<script src="https://kit.fontawesome.com/17da812ad5.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="../js/common.js"></script> 
 	<script type="text/javascript" src="../js/jquery-1.8.1.min.js"></script>  
 	<link rel="stylesheet" type="text/css" href="../css/base.css" /> 	

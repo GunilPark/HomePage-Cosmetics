@@ -14,8 +14,7 @@ public class NoticeList implements InterExecute {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-Notice_dao dao = new Notice_dao();
-		
+		Notice_dao dao = new Notice_dao();
 		String select = request.getParameter("t_select");
 		String search = request.getParameter("t_search");
 		if(select == null) {
@@ -28,8 +27,8 @@ Notice_dao dao = new Notice_dao();
 		int current_page = 0; // 현재페이지 번호
 		int total_page = 0;    // 전체 페이지 수
 		int total_count = dao.getTotalCount(select, search); // 전체 행수 21
-		int list_setup_count = 5;  //한페이지당 출력 행수 
-		int list_page_count  = 3;
+		int list_setup_count = 10;  //한페이지당 출력 행수 
+		int list_page_count  = 2;
 		
 		
 		if(nowPage == null || nowPage.equals("")) current_page = 1; 
@@ -50,6 +49,11 @@ Notice_dao dao = new Notice_dao();
 		ArrayList<Notice_dto> dtos = 
 			dao.getList(select,search,start,end);
 		
+		System.out.println("total_count:" + total_count);
+		
+		
+		request.setAttribute("t_total_count", total_count);
+		request.setAttribute("t_order", order);
 		request.setAttribute("t_dtos", dtos);
 		request.setAttribute("t_select", select);
 		request.setAttribute("t_search", search);

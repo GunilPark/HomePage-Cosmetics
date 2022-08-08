@@ -14,6 +14,14 @@ public class CommonUtil {
 		
 		// 첨부파일 공지 사항 경로(notice)
 		public static String getFile_dir_notice(){
+			String dir = "C:/Users/pki32/git/HomePage-Cosmetics/web_servlet_cos/WebContent/attach/notice";
+			return dir;
+		}
+		public static String getFile_dir_news(){
+			String dir = "C:/Users/pki32/git/HomePage-Cosmetics/web_servlet_cos/WebContent/attach/news";
+			return dir;
+		}
+		public static String getFile_dir_freeboard(){
 			String dir = "C:/Users/pki32/git/HomePage-Cosmetics/web_servlet_cos/WebContent/attach/free";
 			return dir;
 		}

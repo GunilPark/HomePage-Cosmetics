@@ -26,9 +26,10 @@
 				<tbody>
 				<tr>
 					<th><i class="fas fa-asterisk important"></i>Title</th>
-					<td colspan="3">
+					<td colspan="2">
 						${t_dto.getTitle()}
 					</td>
+					<td> <i class="fa-solid fa-eye"></i> ${t_dto.getHit()}</td>
 				</tr>
 				<tr>
 					<th><label for="t_content"><i class="fas fa-asterisk important"></i>Content</label></th>
@@ -39,7 +40,13 @@
 				</tr>
 				<tr>
 					<th><i class="fas fa-asterisk"></i>Attach</th>
-					<td colspan="3" class="hei30">${t_dto.getAttach()}</td>
+					<td colspan="3" class="hei30">
+						<!--
+						<a href="/common/filedown.jsp?t_fileDir=notice&t_file=${t_dto.getAttach()}">${t_dto.getAttach()}</a>
+						-->
+						<a href="/AttachDown?t_fileDir=notice&t_file=${t_dto.getAttach()}">${t_dto.getAttach()}</a>
+					
+					</td>
 				</tr>					
 				<tr>
 					<th>Writer</th>
@@ -54,6 +61,21 @@
 				
 				</tbody>
 			</table>
+
+			<div class="preNext">
+			<c:if test="${not empty t_preDto}">
+				<p class="pre">
+					<a href="goPre('${t_preDto.getNo()}')"><span class="preNextInfo"><i class="fa-solid fa-circle-arrow-left"></i>이전글</span><br></a>
+					<span class="preNextTitle">${t_preDto.getTitle()}</span>
+				</p>
+			</c:if>	
+			<c:if test="${not empty t_nextDto}">
+				<p class="next">
+					<a href="goNext('${t_nextDto.getNo()}')"><span class="preNextInfo">다음글<i class="fa-solid fa-circle-arrow-right"></i></span><br></a>
+					<span class="preNextTitle">${t_nextDto.getTitle()}</span>
+				</p>
+			</c:if>
+			</div>
 			<div class="buttonGroup_center">
 				<a href="/Notice" class="butt">LIST</a>
 				<c:if test="${sessionLevel eq 'top'}">
@@ -77,27 +99,18 @@
 	
 	</div>
 </div>
-<div id="footer_div">	
-	<div id="footer">
-		<div class="footer_left">
-			<img src="img/images/footer_logo.jpg">
-		</div>
-		<div class="footer_center">
-			<p>개인정보처리방침  | 개인정보보호정책 | 이용약관 | 협회소개</p>
-			우편번호 (26349) 강원 원주시 호저면 우무개로 365 2층, 2호 | 사업자번호 : 209-82-64664<br>
-			TEL: 033-747-4012 | FAX: 033-747-4014 | E-mail: korbamtb@daum.net<br>
-			COPYRIGHT 2012 KOREA OFF ROAD BIKE ASSOCIATION. ALL RIGHT RESERVED		
-		</div>
-		<div class="footer_right">
-			서울사무소: (02) 4545- 8545<br>
-			대전사무소: (042) 5417- 8842<br>
-			광주사무소: (052) 4545- 2214<br>
-			부산사무소: (048) 4545- 7546
-		</div>	
-	</div>
-</div>	
+<%@ include file="../common_footer.jsp"%>
 
 </body>
+<script>
+function goView(no){
+	notiForm.t_gubun.value ="view";
+	notiForm.t_no.value = no;
+	notiForm.method="post";
+	notiForm.action="/Notice";
+	notiForm.submit();
+}
+</script>
 </html>
 
 

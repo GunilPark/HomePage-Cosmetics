@@ -1,4 +1,18 @@
 /************************* 공통*********************************/
+	.totalCount{
+		//border:1px solid red;
+		width:200px;
+		float:left;
+		font-size:12px;
+		padding-top:8px;
+		
+	}
+	.listpage_box{
+		//border:1px solid red;
+		width:300px;
+		float:right;
+	}
+	
 	#member{
 		margin-top:40px;
 	}
@@ -56,6 +70,36 @@
 	
 	
 /************************* 게시판 공통 *********************************/	
+
+/*이전글 다음글*/
+	.preNext .pre{
+	float:left;
+	width:250px;
+	//border:1px soild red;
+	
+	}
+	.preNext .next{
+	text-align:right;
+	float:right;
+	width:250px;
+	//border:1px soild red;
+	}
+	.preNext{
+	height:40px;
+	margin-top:10px;
+	}
+	.preNext .preNextTitle{
+	color:gray;
+	font-size:14px;
+	}
+	
+	.preNext .preNextInfo{
+	color:black;
+	font-size:13px;
+	}
+	
+/*------*/	
+
 	.boardForm{
 		width:100%;
 		font-size: 15px;

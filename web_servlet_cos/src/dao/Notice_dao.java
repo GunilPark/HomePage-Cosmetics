@@ -73,6 +73,7 @@ public class Notice_dao{
 		}finally {
 			DBConnection.closeDB(con, ps, rs);
 		}
+		System.out.println("no이건 나오지?" + no);
 		return dto;		
 	}
 	//삭제
@@ -293,6 +294,71 @@ public class Notice_dao{
 		}
 		
 		return result;
+	}
+
+
+	public Notice_dto getPreNO(String no) {
+		Notice_dto dto = null;
+		String query = "select a.preNo,b.title\r\n" + 
+				"from(\r\n" + 
+				"select max(no) as preNo\r\n" + 
+				"from homepage_박건일_notice\r\n" + 
+				"where no < '"+no+"'\r\n" + 
+				") a, homepage_박건일_notice b\r\n" + 
+				"where a.preno = b.no";
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String preNo = rs.getString("preNo");
+				String title = rs.getString("title");
+				
+				System.out.println("no" + preNo + "title"+ title);
+				dto = new Notice_dto(preNo,title);
+				
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("getPreNO() : 오류" + query);
+		}finally {
+			
+		}
+		return dto;
+	}
+
+
+	public Notice_dto getNextNO(String no) {
+		Notice_dto dto = null;
+		String query = "select a.nextNo,b.title\r\n" + 
+				"from(\r\n" + 
+				"select min(no) as nextNo\r\n" + 
+				"from homepage_박건일_notice\r\n" + 
+				"where no > '"+no+"'\r\n" + 
+				") a, homepage_박건일_notice b\r\n" + 
+				"where a.nextNo = b.no";
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String nextNo = rs.getString("nextNo");
+				String title = rs.getString("title");
+				
+				
+				System.out.println("no" + nextNo + "title"+ title);
+				dto = new Notice_dto(nextNo,title);
+				
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("getNextNO() : 오류" + query);
+		}finally {
+			
+		}
+		return dto;
 	}
 	
 }

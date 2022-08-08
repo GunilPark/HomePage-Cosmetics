@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <%@ include file="/common_head.jsp" %>
 
+<div id="container">
 
 	<div id="top_main">
 		<!--<img src="img/images/top_back_1.jpg">-->
@@ -38,7 +39,7 @@
 				<tr>
 					<th><i class="fas fa-asterisk"></i>Attach</th>
 					<td colspan="3" class="hei30">
-						송금계좌번호.hwp 삭제<input type="checkbox"><br>
+						${t_dto.getAttach()} 삭제<input type="checkbox"><br>
 						<input type="file" class="inputFile">
 					</td>
 				</tr>					
@@ -52,11 +53,11 @@
 				<tr>
 					<th>Writer</th>
 					<td>
-						관리자
+						${t_dto.getReg_id()}
 					</td>
 					<th>Reg Date</th>
 					<td>
-						2021-02-28
+						${t_dto.getReg_date()}
 					</td>
 				</tr>
 				
@@ -64,32 +65,14 @@
 				</tbody>
 			</table>
 			<div class="buttonGroup_center">
-				<a href="homepage_6_css분리_공지사항_목록.html" class="butt">LIST</a>
-				<a href="" class="butt">UPDATE</a>
+				<a href="/Notice" class="butt">LIST</a>
+				<a href="javascript:goSave()" class="butt">UPDATE</a>
 			</div>	
 		</div>	
 	
 	</div>
 </div>
-<div id="footer_div">	
-	<div id="footer">
-		<div class="footer_left">
-			<img src="img/images/footer_logo.jpg">
-		</div>
-		<div class="footer_center">
-			<p>개인정보처리방침  | 개인정보보호정책 | 이용약관 | 협회소개</p>
-			우편번호 (26349) 강원 원주시 호저면 우무개로 365 2층, 2호 | 사업자번호 : 209-82-64664<br>
-			TEL: 033-747-4012 | FAX: 033-747-4014 | E-mail: korbamtb@daum.net<br>
-			COPYRIGHT 2012 KOREA OFF ROAD BIKE ASSOCIATION. ALL RIGHT RESERVED		
-		</div>
-		<div class="footer_right">
-			서울사무소: (02) 4545- 8545<br>
-			대전사무소: (042) 5417- 8842<br>
-			광주사무소: (052) 4545- 2214<br>
-			부산사무소: (048) 4545- 7546
-		</div>	
-	</div>
-</div>	
+<%@ include file="../common_footer.jsp"%>
 
 </body>
 </html>

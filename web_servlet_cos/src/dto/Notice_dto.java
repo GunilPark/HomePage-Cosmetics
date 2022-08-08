@@ -13,6 +13,13 @@ public class Notice_dto {
 		this.reg_id = reg_id;
 		this.reg_date = reg_date;
 	}
+	
+	public Notice_dto(String no, String title) {
+		super();
+		this.no = no;
+		this.title = title;
+	}
+
 
 	public String getNo() {
 		return no;

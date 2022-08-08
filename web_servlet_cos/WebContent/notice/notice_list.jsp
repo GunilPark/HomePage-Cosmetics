@@ -46,8 +46,25 @@
 			<p class="n_title">
 				<i class="fas fa-edit"></i> NOTICE
 			</p>
+<style>
+	.totalCount{
+		//border:1px solid red;
+		width:200px;
+		float:left;
+		font-size:12px;
+		padding-top:8px;
+		
+	}
+	.listpage_box{
+		//border:1px solid red;
+		width:300px;
+		float:right;
+	}
+	
+</style>
+			<p class="totalCount">총 게시글 ${t_total_count}건</p>
 			<form name="noti">
-			<p class="select_box">
+			<p class="select_box listpage_box">
 				<select name="t_select" class="sel_box">
 					<option value="a.title" <c:if test="${t_select eq 'a.title'}">selected</c:if>>Title</option>
 					<option value="a.content" <c:if test="${t_select eq 'a.content'}">selected</c:if>>Content</option>
@@ -77,9 +94,11 @@
 					</tr>
 				</thead>
 				<tbody>
+				<c:set var="order" value="${t_order}"/>
 				<c:forEach items="${t_dtos}" var="dto">
 					<tr>
-						<td><a href="javascript:goView('${dto.getNo()}')">${dto.getNo()}</a></td>
+						<td><a href="javascript:goView('${dto.getNo()}')">${order}</a></td>
+						<c:set var="order" value="${order - 1}"/>
 						<td class="t_center"><a href="javascript:goView('${dto.getNo()}')">${dto.getTitle()}</a></td>
 						<td><c:if test="${dto.getAttach() ne null}">
 						<i class="fas fa-paperclip"></i>
