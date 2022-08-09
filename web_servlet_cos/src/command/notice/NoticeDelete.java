@@ -5,25 +5,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.InterExecute;
 import dao.Notice_dao;
-import dto.Notice_dto;
 
-public class NoticeView implements InterExecute {
+public class NoticeDelete implements InterExecute {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		Notice_dao dao = new Notice_dao();
 		String no = request.getParameter("t_no");
-		dao.setHitCount(no);
-		Notice_dto dto = dao.getView(no);
+		int k = dao.getDelete(no);
+		String msg = "실패";
+		String url = "Notice";
+		if(k==1) {
+			msg = "삭제성공";
+		}
 		
-		Notice_dto preDto = dao.getPreNO(no);
-		Notice_dto nextDto = dao.getNextNO(no);
-
-		request.setAttribute("t_preDto", preDto);
-		request.setAttribute("t_nextDto", nextDto);
-		request.setAttribute("t_dto", dto);
+		request.setAttribute("t_msg", msg);
+		request.setAttribute("t_url", url);
 		
-
+		
 	}
 
 }

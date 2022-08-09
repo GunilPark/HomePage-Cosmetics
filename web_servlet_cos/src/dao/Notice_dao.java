@@ -73,7 +73,6 @@ public class Notice_dao{
 		}finally {
 			DBConnection.closeDB(con, ps, rs);
 		}
-		System.out.println("no이건 나오지?" + no);
 		return dto;		
 	}
 	//삭제
@@ -314,16 +313,14 @@ public class Notice_dao{
 				String preNo = rs.getString("preNo");
 				String title = rs.getString("title");
 				
-				System.out.println("no" + preNo + "title"+ title);
 				dto = new Notice_dto(preNo,title);
-				
 			}
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
 			System.out.println("getPreNO() : 오류" + query);
 		}finally {
-			
+			DBConnection.closeDB(con, ps, rs);
 		}
 		return dto;
 	}
@@ -346,8 +343,6 @@ public class Notice_dao{
 				String nextNo = rs.getString("nextNo");
 				String title = rs.getString("title");
 				
-				
-				System.out.println("no" + nextNo + "title"+ title);
 				dto = new Notice_dto(nextNo,title);
 				
 			}
@@ -356,7 +351,7 @@ public class Notice_dao{
 			e.printStackTrace();
 			System.out.println("getNextNO() : 오류" + query);
 		}finally {
-			
+			DBConnection.closeDB(con, ps, rs);
 		}
 		return dto;
 	}

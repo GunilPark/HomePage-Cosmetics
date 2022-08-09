@@ -63,37 +63,40 @@
 			</table>
 
 			<div class="preNext">
+			
 			<c:if test="${not empty t_preDto}">
 				<p class="pre">
-					<a href="goPre('${t_preDto.getNo()}')"><span class="preNextInfo"><i class="fa-solid fa-circle-arrow-left"></i>이전글</span><br></a>
-					<span class="preNextTitle">${t_preDto.getTitle()}</span>
+					<a href="javascript:goView('${t_preDto.getNo()}')"><span class="preNextInfo"><i class="fa-solid fa-circle-arrow-left"></i>이전글</span><br></a>
+					<span class="preNextTitle">
+						<c:if test="${fn:length(t_preDto.getTitle()) > 10}">
+							${fn:substring(t_preDto.getTitle(),0,10) }…
+						</c:if>
+						<c:if test="${fn:length(t_preDto.getTitle()) <= 10}">
+							${t_preDto.getTitle()}
+						</c:if>
+					</span>
 				</p>
 			</c:if>	
 			<c:if test="${not empty t_nextDto}">
 				<p class="next">
-					<a href="goNext('${t_nextDto.getNo()}')"><span class="preNextInfo">다음글<i class="fa-solid fa-circle-arrow-right"></i></span><br></a>
-					<span class="preNextTitle">${t_nextDto.getTitle()}</span>
+					<a href="javascript:goView('${t_nextDto.getNo()}')"><span class="preNextInfo">다음글<i class="fa-solid fa-circle-arrow-right"></i></span><br></a>
+					<span class="preNextTitle">
+						<c:if test="${fn:length(t_nextDto.getTitle()) > 10}">
+							${fn:substring(t_nextDto.getTitle(),0,10) }…
+						</c:if>
+						<c:if test="${fn:length(t_nextDto.getTitle()) <= 10}">
+							${t_nextDto.getTitle()}
+						</c:if>
+					</span>
 				</p>
 			</c:if>
 			</div>
-			<div class="buttonGroup_center">
+			<div class="buttonGroup_center" style="float: right;">
 				<a href="/Notice" class="butt">LIST</a>
 				<c:if test="${sessionLevel eq 'top'}">
 					<a href="javascript:goWrite()" class="butt">UPDATE</a>
+					<a href="javascript:goDelete()" class="butt">DELETE</a>
 				</c:if>
-				<form name="update">
-					<input name="t_gubun" type="hidden">
-					<input name="t_no" type="hidden" value="${t_dto.getNo()}">
-				</form>
-				<script>
-					function goWrite(){
-						update.t_gubun.value = "update";
-						update.method="post";
-						update.action="/Notice";
-						update.submit();
-						
-					}
-				</script>
 			</div>	
 		</div>	
 	
@@ -102,13 +105,35 @@
 <%@ include file="../common_footer.jsp"%>
 
 </body>
+<form name="viewno">
+	<input type="hidden" name="t_gubun" value="">
+	<input type="hidden" name="t_no" value="">
+</form>
+<form name="update">
+	<input name="t_gubun" type="hidden">
+	<input name="t_no" type="hidden" value="${t_dto.getNo()}">
+</form>
 <script>
+function goDelete(){
+	update.t_gubun.value = "delete";
+	update.method="post";
+	update.action="/Notice";
+	update.submit();
+}
+function goWrite(){
+	update.t_gubun.value = "update";
+	update.method="post";
+	update.action="/Notice";
+	update.submit();
+						
+}
+
 function goView(no){
-	notiForm.t_gubun.value ="view";
-	notiForm.t_no.value = no;
-	notiForm.method="post";
-	notiForm.action="/Notice";
-	notiForm.submit();
+	viewno.t_gubun.value ="view";
+	viewno.t_no.value = no;
+	viewno.method="post";
+	viewno.action="/Notice";
+	viewno.submit();
 }
 </script>
 </html>

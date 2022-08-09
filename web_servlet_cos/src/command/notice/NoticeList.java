@@ -49,7 +49,6 @@ public class NoticeList implements InterExecute {
 		ArrayList<Notice_dto> dtos = 
 			dao.getList(select,search,start,end);
 		
-		System.out.println("total_count:" + total_count);
 		
 		
 		request.setAttribute("t_total_count", total_count);

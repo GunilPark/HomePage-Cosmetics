@@ -135,8 +135,9 @@
 		height:30px;
 		text-align:center;
 		padding-top:10px;
-		background:#f3afe7;
+		background:#a59ea4;
 		margin-left:5px;
+		border-radius: 20px;
 	}
 	.boardForm .input100{
 		width:100px;

@@ -1,6 +1,6 @@
 package controller;
 
-import java.io.IOException; 
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.notice.NoticeDelete;
 import command.notice.NoticeList;
 import command.notice.NoticeUpdate;
 import command.notice.NoticeView;
@@ -61,6 +62,10 @@ public class Notice extends HttpServlet {
 			InterExecute notice = new NoticeUpdate();
 			notice.execute(request, response);
 			viewPage = "/notice/notice_update.jsp";
+		}else if(gubun.equals("delete")) {
+			InterExecute notice = new NoticeDelete();
+			notice.execute(request, response);
+			viewPage = "/notice/common_alert_page.jsp";
 		}
 		
 		
