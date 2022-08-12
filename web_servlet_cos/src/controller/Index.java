@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import dao.Notice_dao;
+import dto.Notice_dto;
 
 /**
  * Servlet implementation class Index
@@ -30,19 +33,11 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession(true);
-		String sessionId = (String)session.getAttribute("sessionId");
-		String sessionLevel = (String)session.getAttribute("sessionLevel");
-		String sessionName = (String)session.getAttribute("sessionName");
-		
-		if(sessionId == null) {
-			sessionId = "";
-			sessionLevel = "";
-			sessionName = "";
-		}
-		session.setAttribute("sessionId", sessionId);
-		session.setAttribute("sessionLevel", sessionLevel);
-		session.setAttribute("sessionName", sessionName);
+		Notice_dao dao = new Notice_dao();
+		ArrayList<Notice_dto> dtos = dao.getList("a.title", "", 0, 7);
+		System.out.println("제목: " + dtos.get(1).getTitle());
+		System.out.println("제발 뭐라도 좋으니깐 뭐라도 적어줘,,.. 부틱한다...");
+		request.setAttribute("t_dtos", dtos);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);

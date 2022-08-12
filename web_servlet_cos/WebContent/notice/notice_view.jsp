@@ -94,7 +94,7 @@
 			<div class="buttonGroup_center" style="float: right;">
 				<a href="/Notice" class="butt">LIST</a>
 				<c:if test="${sessionLevel eq 'top'}">
-					<a href="javascript:goWrite()" class="butt">UPDATE</a>
+					<a href="javascript:gouUpdate()" class="butt">UPDATE</a>
 					<a href="javascript:goDelete()" class="butt">DELETE</a>
 				</c:if>
 			</div>	
@@ -112,15 +112,19 @@
 <form name="update">
 	<input name="t_gubun" type="hidden">
 	<input name="t_no" type="hidden" value="${t_dto.getNo()}">
+	<input name="t_delete_attach" type="hidden" value="${t_dto.getAttach()}">
 </form>
 <script>
 function goDelete(){
-	update.t_gubun.value = "delete";
-	update.method="post";
-	update.action="/Notice";
-	update.submit();
+	if(confirm("정말 삭제하시겠습니까?")){
+		update.t_gubun.value = "delete";
+		update.method="post";
+		update.action="/Notice";
+		update.submit();
+	}
+	
 }
-function goWrite(){
+function gouUpdate(){
 	update.t_gubun.value = "update";
 	update.method="post";
 	update.action="/Notice";

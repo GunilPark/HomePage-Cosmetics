@@ -329,28 +329,13 @@ background:rgba(245,244,245,0.7);
 						<a href="/Notice">&nbsp;NOTICE&nbsp;<i class="far fa-plus-square"></i></a>
 					</legend>
 					<ul>
+					<c:forEach items="${t_dtos}" var="dto">
 						<li>
-							<a href=""><span class="noti_t">2021설 명절 특별이벤트 진행 최대할인</span><span class="noti_d">2012-02-05</span></a>	
+							<a href="javascript:goView('${dto.getNo()}')">
+							<span class="noti_t">${dto.getTitle()}</span>
+							<span class="noti_d">${dto.getRegdate()}</span></a>	
 						</li>
-						<li>
-							<a href=""><span class="noti_t">2021설 명절 특별이벤트 진행 최대할인</span><span class="noti_d">2012-02-05</span></a>	
-						</li>
-						<li>
-							<a href=""><span class="noti_t">2021설 명절 특별이벤트 진행 최대할인</span><span class="noti_d">2012-02-05</span></a>	
-						</li>
-						<li>
-							<a href=""><span class="noti_t">2021설 명절 특별이벤트 진행 최대할인</span><span class="noti_d">2012-02-05</span></a>	
-						</li>
-						<li>
-							<a href=""><span class="noti_t">2021설 명절 특별이벤트 진행 최대할인</span><span class="noti_d">2012-02-05</span></a>	
-						</li>
-						<li>
-							<a href=""><span class="noti_t">2021설 명절 특별이벤트 진행 최대할인</span><span class="noti_d">2012-02-05</span></a>	
-						</li>
-						<li>
-							<a href=""><span class="noti_t">2021설 명절 특별이벤트 진행 최대할인</span><span class="noti_d">2012-02-05</span></a>	
-						</li>
-
+					</c:forEach>	
 					</ul>
 				</fieldset>	
 			</div>
